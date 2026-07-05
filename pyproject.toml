@@ -8,7 +8,6 @@ dependencies = [
     "beautifulsoup4",
     "black",
     "tiktoken",
-    "openai",
     "unstructured",
     "nltk",
     "fastapi",
@@ -19,18 +18,15 @@ dependencies = [
     "tqdm",
     "isort",
     "langchainhub",
-    "firecrawl-py",
     "langchain-community",
     "langsmith",
     "pillow",
-    "langchain-tavily",
-    "langchain-pinecone",
-    "certifi",
-    "langchain-chroma",
     "python-dotenv",
     "langchain-google-genai>=4.2.6",
     "langchain-nvidia-ai-endpoints>=1.4.2",
     "aiofiles==25.1.0",
+    "pymupdf>=1.28.0",
+    "langchain-qdrant>=1.1.0",
 ]
 
 [project.optional-dependencies]
