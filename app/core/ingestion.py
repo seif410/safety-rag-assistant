@@ -56,7 +56,7 @@ def extract_pdf_with_metadata(
                     metadata={
                         "source": pdf_path,
                         "page": page_num + 1,
-                        "doc_type": doc_type,  # "regulation" | "incident_report" | "procedure"
+                        "doc_type": doc_type,  # "regulation" | "incident_report"
                         "filename": Path(pdf_path).name,
                     },
                 )
@@ -65,6 +65,37 @@ def extract_pdf_with_metadata(
         f"PDF Extraction: Extracted {len(documents)} pages from {Path(pdf_path).name}"
     )
     return documents
+
+
+def extract_markdown_with_metadata(
+    md_path: str, doc_type: str = "incident_report"
+) -> list[Document]:
+    """Extract text from a Markdown file into a single Document with metadata."""
+    log_info(f"Markdown Extraction: Opening {md_path}", Colors.PURPLE)
+    try:
+        text = Path(md_path).read_text(encoding="utf-8")
+    except FileNotFoundError:
+        log_error(f"Markdown Extraction: File not found - {md_path}")
+        return []
+    except Exception as e:
+        log_error(f"Markdown Extraction: Failed to read {md_path} - {e}")
+        return []
+
+    if not text.strip():
+        log_warning(f"Markdown Extraction: Empty file - {md_path}")
+        return []
+
+    log_success(f"Markdown Extraction: Extracted {Path(md_path).name}")
+    return [
+        Document(
+            page_content=text,
+            metadata={
+                "source": md_path,
+                "doc_type": doc_type,  # "regulation" | "incident_report"
+                "filename": Path(md_path).name,
+            },
+        )
+    ]
 
 
 def chunk_documents(documents: list[Document]) -> list[Document]:
