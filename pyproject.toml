@@ -1,35 +1,26 @@
 [project]
-name = "documentation-helper"
+name = "safety-rag-assistant"
 version = "0.1.0"
-description = "Add your description here"
+description = "RAG-powered Q&A over OSHA safety regulations and incident reports"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "beautifulsoup4",
-    "black",
-    "tiktoken",
-    "unstructured",
-    "nltk",
     "fastapi",
-    "jinja2",
     "uvicorn",
-    "streamlit",
-    "streamlit-chat",
-    "tqdm",
-    "isort",
-    "langchainhub",
-    "langchain-community",
-    "langsmith",
-    "pillow",
     "python-dotenv",
+    "pydantic-settings>=2.0.0",
+    "langchain-core",
+    "langchain-text-splitters",
     "langchain-google-genai>=4.2.6",
     "langchain-nvidia-ai-endpoints>=1.4.2",
-    "aiofiles==25.1.0",
-    "pymupdf>=1.28.0",
     "langchain-qdrant>=1.1.0",
+    "qdrant-client",
+    "pymupdf>=1.28.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "ipykernel",
+    "black",
+    "isort",
 ]
