@@ -1,10 +1,9 @@
 import asyncio
-import os
 
 import pymupdf
 
-from dotenv import load_dotenv
 from pathlib import Path
+from app.config import settings
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
@@ -12,16 +11,16 @@ from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 from logger import Colors, log_error, log_header, log_info, log_success, log_warning
 
-load_dotenv()  # Load environment variables from .env file
-
 embeddings = NVIDIAEmbeddings(
-    model="nvidia/llama-nemotron-embed-1b-v2", chunk_size=50, retry_min_seconds=10
+    model=settings.embedding_model,
+    chunk_size=settings.embedding_batch_size,
+    retry_min_seconds=settings.embedding_retry_min_seconds,
 )
 
-client = QdrantClient(url=os.getenv("QDRANT_URL", "http://localhost:6333"))
+client = QdrantClient(url=settings.qdrant_url)
 vectorstore = QdrantVectorStore(
     client=client,
-    collection_name="safety-docs",
+    collection_name=settings.qdrant_collection_name,
     embedding=embeddings,
 )
 
@@ -103,7 +102,9 @@ def chunk_documents(documents: list[Document]) -> list[Document]:
         f"Chunking: Splitting {len(documents)} documents into chunks", Colors.PURPLE
     )
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1200, chunk_overlap=200, separators=["\n\n", "\n", ". ", " "]
+        chunk_size=settings.chunk_size,
+        chunk_overlap=settings.chunk_overlap,
+        separators=["\n\n", "\n", ". ", " "],
     )
     chunks = splitter.split_documents(documents)
     log_success(f"Chunking: Created {len(chunks)} chunks")

@@ -1,28 +1,28 @@
-import os
-from dotenv import load_dotenv
+from app.config import settings
 from langchain_core.documents import Document
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 from qdrant_client.models import Filter, FieldCondition, MatchValue
 
-load_dotenv()
-client = QdrantClient(url=os.getenv("QDRANT_URL", "http://localhost:6333"))
+client = QdrantClient(url=settings.qdrant_url)
 
 
 embeddings = NVIDIAEmbeddings(
-    model="nvidia/llama-nemotron-embed-1b-v2", chunk_size=50, retry_min_seconds=10
+    model=settings.embedding_model,
+    chunk_size=settings.embedding_batch_size,
+    retry_min_seconds=settings.embedding_retry_min_seconds,
 )
 
 vectorstore = QdrantVectorStore(
     client=client,
-    collection_name="safety-docs",
+    collection_name=settings.qdrant_collection_name,
     embedding=embeddings,
 )
 
 
 def retrieve_with_filter(
-    query: str, doc_type: str | None = None, k: int = 6
+    query: str, doc_type: str | None = None, k: int = settings.retrieval_k
 ) -> list[Document]:
     """Retrieve relevant documents to help answer user queries about safety regulations."""
     search_kwargs = {"k": k}
