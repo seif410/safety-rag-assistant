@@ -1,4 +1,5 @@
 from app.config import settings
+from app.core.reranker import rerank_documents
 from langchain_core.documents import Document
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_qdrant import QdrantVectorStore
@@ -35,4 +36,5 @@ def retrieve_with_filter(
             ]
         )
     retriever = vectorstore.as_retriever(search_kwargs=search_kwargs)
-    return retriever.invoke(query)
+    docs = retriever.invoke(query)
+    return rerank_documents(query, docs)
