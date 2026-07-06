@@ -151,3 +151,30 @@ async def index_documents_async(documents: list[Document], batch_size: int = 50)
         log_warning(
             f"VectorStore Indexing: Processed {successfull}/{len(batches)} batches successfully"
         )
+
+    return successfull == len(batches)
+
+
+async def ingest_file(path: str, doc_type: str = "regulation") -> dict:
+    """Extract, chunk, and index a single PDF or Markdown file.
+
+    Returns a summary dict: {filename, pages, chunks, indexed}.
+    Raises ValueError for unsupported file types.
+    """
+    ext = Path(path).suffix.lower()
+    if ext == ".pdf":
+        documents = extract_pdf_with_metadata(path, doc_type)
+    elif ext in (".md", ".markdown"):
+        documents = extract_markdown_with_metadata(path, doc_type)
+    else:
+        raise ValueError(f"Unsupported file type: {ext or '(none)'}")
+
+    summary = {"filename": Path(path).name, "pages": len(documents), "chunks": 0, "indexed": False}
+    if not documents:
+        log_warning(f"Ingestion: No content extracted from {path}")
+        return summary
+
+    chunks = chunk_documents(documents)
+    summary["chunks"] = len(chunks)
+    summary["indexed"] = await index_documents_async(chunks)
+    return summary

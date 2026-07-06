@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     qdrant_collection_name: str = "safety-docs"
     embedding_model: str = "nvidia/llama-nemotron-embed-1b-v2"
     cohere_rerank_model: str = "rerank-v4.0-pro"
+    chat_model: str = "gemini-2.5-flash"
+    chat_model_provider: str = "google_genai"
     embedding_batch_size: int = 50
     embedding_retry_min_seconds: int = 10
     chunk_size: int = 1200
