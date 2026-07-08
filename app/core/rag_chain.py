@@ -1,5 +1,6 @@
 from app.config import settings
 from app.core.reranker import rerank_documents
+from app.core.ingestion import ensure_collection
 from langchain_core.documents import Document
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_qdrant import QdrantVectorStore
@@ -19,6 +20,7 @@ embeddings = NVIDIAEmbeddings(
     chunk_size=settings.embedding_batch_size,
     retry_min_seconds=settings.embedding_retry_min_seconds,
 )
+ensure_collection()
 
 vectorstore = QdrantVectorStore(
     client=client,
@@ -125,11 +127,11 @@ def _extract_text(content) -> str:
         return content
     if isinstance(content, list):
         return "".join(
-            block.get("text", "")
-            if isinstance(block, dict) and block.get("type") == "text"
-            else block
-            if isinstance(block, str)
-            else ""
+            (
+                block.get("text", "")
+                if isinstance(block, dict) and block.get("type") == "text"
+                else block if isinstance(block, str) else ""
+            )
             for block in content
         )
     return str(content)

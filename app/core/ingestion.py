@@ -9,6 +9,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
+from qdrant_client.models import Distance, VectorParams
 from logger import Colors, log_error, log_header, log_info, log_success, log_warning
 
 embeddings = NVIDIAEmbeddings(
@@ -18,6 +19,23 @@ embeddings = NVIDIAEmbeddings(
 )
 
 client = QdrantClient(url=settings.qdrant_url)
+
+
+def ensure_collection() -> None:
+    """Create the collection if missing, sized to the embedding model."""
+    if client.collection_exists(settings.qdrant_collection_name):
+        return
+    dim = len(embeddings.embed_query("dimension probe"))
+    client.create_collection(
+        collection_name=settings.qdrant_collection_name,
+        vectors_config=VectorParams(size=dim, distance=Distance.COSINE),
+    )
+    log_success(
+        f"Qdrant: Created collection '{settings.qdrant_collection_name}' (dim={dim})"
+    )
+
+
+ensure_collection()
 vectorstore = QdrantVectorStore(
     client=client,
     collection_name=settings.qdrant_collection_name,
@@ -169,7 +187,12 @@ async def ingest_file(path: str, doc_type: str = "regulation") -> dict:
     else:
         raise ValueError(f"Unsupported file type: {ext or '(none)'}")
 
-    summary = {"filename": Path(path).name, "pages": len(documents), "chunks": 0, "indexed": False}
+    summary = {
+        "filename": Path(path).name,
+        "pages": len(documents),
+        "chunks": 0,
+        "indexed": False,
+    }
     if not documents:
         log_warning(f"Ingestion: No content extracted from {path}")
         return summary
