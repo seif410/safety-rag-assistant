@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Who is required to pay for the personal protective equipment that workers need on the job?",
+    "expected_answer": "The employer must provide required protective equipment to workers free of charge.",
+    "expected_source": "OSHA3021.pdf",
+    "doc_type": "regulation"
+  },
+  {
+    "question": "Which law gives workers the right to a safe workplace and created OSHA?",
+    "expected_answer": "The Occupational Safety and Health Act of 1970 (OSH Act) gives workers the right to safe and healthful working conditions and created OSHA.",
+    "expected_source": "OSHA3021.pdf",
+    "doc_type": "regulation"
+  },
+  {
+    "question": "What does the General Duty Clause of the OSH Act require of employers?",
+    "expected_answer": "The General Duty Clause, Section 5(a)(1), requires employers to provide their workers with a workplace free from recognized hazards that are likely to cause death or serious physical harm.",
+    "expected_source": "SHPM_guidelines.pdf",
+    "doc_type": "regulation"
+  },
+  {
+    "question": "What overall approach do OSHA's Safety and Health Program Management Guidelines promote?",
+    "expected_answer": "A proactive approach that finds and fixes hazards before they cause injury or illness, built on continuous improvement: start with a basic program and simple goals and grow from there by monitoring performance and evaluating outcomes.",
+    "expected_source": "SHPM_guidelines.pdf",
+    "doc_type": "regulation"
+  },
+  {
+    "question": "Can workers file a complaint with OSHA, and are they protected if they do?",
+    "expected_answer": "Yes. Workers have the right to file a confidential complaint with OSHA asking it to inspect their workplace, and it is illegal for an employer to retaliate against a worker for exercising their rights under the OSH Act, including filing a complaint or reporting an injury.",
+    "expected_source": "OSHA3021.pdf",
+    "doc_type": "regulation"
+  },
+  {
+    "question": "What happened in the fall protection incident where a steel erection worker removed his harness?",
+    "expected_answer": "A steel erection worker at Site A worked on scaffolding at about 14 feet without a personal fall arrest system after removing his harness because it restricted his movement; no guardrails or tie-off were in place. He was spotted and corrected before any injury occurred.",
+    "expected_source": "incident_report_001.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "What PPE should the electrician have worn during the 480V maintenance work?",
+    "expected_answer": "Class 00 insulated gloves rated for electrical work, instead of the standard leather gloves he was actually wearing.",
+    "expected_source": "incident_report_002.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "What caused the head protection PPE violation during concrete finishing at Site A?",
+    "expected_answer": "Three workers performed concrete finishing under an active overhead crane operation without hard hats; their hard hats were left in the break room and they had skipped PPE to avoid a concrete batch timeout. No injury occurred and work was stopped until they donned hard hats.",
+    "expected_source": "incident_report_003.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "What happened in the warehouse forklift incident on Site B?",
+    "expected_answer": "A forklift operator struck a pedestrian at a warehouse aisle intersection because a load stacked to about 1.8 meters obstructed forward visibility and the operator did not travel in reverse. The pedestrian suffered a minor tibia fracture and 14 lost workdays.",
+    "expected_source": "incident_report_004.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "Why did the confined space entry incident at the chemical storage tank occur?",
+    "expected_answer": "Two workers entered a former solvent storage tank without the required atmospheric testing; the entry permit's atmospheric monitoring section was left blank but signed off by the supervisor. The lead worker became dizzy from residual solvent vapors that exceeded the permissible exposure limit.",
+    "expected_source": "incident_report_005.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "What led to the scaffolding collapse at Building 3 on Site B?",
+    "expected_answer": "Tubular frame scaffolding collapsed because it was erected by unqualified personnel: base plates sat on unprepared sandy soil without mudsills, cross-bracing was missing from two lower bays, and workers added an unsecured cantilevered plank extension. Two workers fell from about 9 meters.",
+    "expected_source": "incident_report_006.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "How did the hot work fire start during welding at Building 1?",
+    "expected_answer": "Welding sparks and slag fell through open grating onto cardboard packaging stored about 4 meters below, within the 35-foot hot work exclusion zone; no spark containment barrier was in place and the fire watch had no line of sight to the area below. A worker extinguished it with no injuries.",
+    "expected_source": "incident_report_007.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "What was the high-visibility PPE near-miss on the night shift at Site B?",
+    "expected_answer": "A maintenance technician crossed the main vehicle access road at night in dark clothing without a high-visibility vest and was nearly struck by a delivery truck, which braked and stopped about 1.5 meters away. His vest was in his locker across the road.",
+    "expected_source": "incident_report_008.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "Why were the sandblasting workers at risk in the respiratory protection incident?",
+    "expected_answer": "Four workers sandblasting a steel structure wore only nuisance dust masks instead of NIOSH-approved abrasive blasting or supplied-air respirators; airborne crystalline silica measured 0.15 mg/m3, three times the OSHA permissible exposure limit of 0.05 mg/m3.",
+    "expected_source": "incident_report_009.md",
+    "doc_type": "incident_reports"
+  },
+  {
+    "question": "What caused the crane to drop the concrete wall panel at Site B?",
+    "expected_answer": "A wire rope sling with visible broken wires and corrosion failed during the lift because the pre-use rigging inspection was inadequate; a roughly 2,400 kg panel fell about 6 meters into an area with no established exclusion zone. Workers moved clear and one sustained a minor laceration.",
+    "expected_source": "incident_report_010.md",
+    "doc_type": "incident_reports"
+  }
+]
