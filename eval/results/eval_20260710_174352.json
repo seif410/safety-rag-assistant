@@ -1,0 +1,297 @@
+{
+  "timestamp": "2026-07-10T17:43:52",
+  "dataset_size": 5,
+  "metrics": {
+    "retrieval_precision": 1.0,
+    "answer_faithfulness": 1.0
+  },
+  "retrieval": [
+    {
+      "question": "Who is required to pay for the personal protective equipment that workers need on the job?",
+      "expected_source": "OSHA3021.pdf",
+      "retrieved_sources": [
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "incident_report_001.md"
+      ],
+      "hit": true
+    },
+    {
+      "question": "Which law gives workers the right to a safe workplace and created OSHA?",
+      "expected_source": "OSHA3021.pdf",
+      "retrieved_sources": [
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf"
+      ],
+      "hit": true
+    },
+    {
+      "question": "What does the General Duty Clause of the OSH Act require of employers?",
+      "expected_source": "SHPM_guidelines.pdf",
+      "retrieved_sources": [
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "SHPM_guidelines.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf"
+      ],
+      "hit": true
+    },
+    {
+      "question": "What overall approach do OSHA's Safety and Health Program Management Guidelines promote?",
+      "expected_source": "SHPM_guidelines.pdf",
+      "retrieved_sources": [
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf"
+      ],
+      "hit": true
+    },
+    {
+      "question": "What happened in the fall protection incident where a steel erection worker removed his harness?",
+      "expected_source": "incident_report_001.md",
+      "retrieved_sources": [
+        "incident_report_001.md",
+        "incident_report_001.md",
+        "incident_report_010.md",
+        "incident_report_001.md",
+        "incident_report_006.md",
+        "incident_report_003.md"
+      ],
+      "hit": true
+    }
+  ],
+  "faithfulness": [
+    {
+      "question": "Who is required to pay for the personal protective equipment that workers need on the job?",
+      "expected_answer": "The employer must provide required protective equipment to workers free of charge.",
+      "generated_answer": "Based on the retrieved OSHA regulation, employers are responsible for providing personal protective equipment (PPE) free of charge to their employees. This is stated in the regulation, where it is written that employers must provide \"most protective equipment free of charge.\" (Source: OSHA3021.pdf, p.11)",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 11,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 6,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 10,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 9,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 4,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 6,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "Which law gives workers the right to a safe workplace and created OSHA?",
+      "expected_answer": "The Occupational Safety and Health Act of 1970 (OSH Act) gives workers the right to safe and healthful working conditions and created OSHA.",
+      "generated_answer": "The law that gives workers the right to a safe workplace and created OSHA is the Occupational Safety and Health Act of 1970 (OSH Act).",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 5,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 4,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 9,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 11,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 6,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 18,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What does the General Duty Clause of the OSH Act require of employers?",
+      "expected_answer": "The General Duty Clause, Section 5(a)(1), requires employers to provide their workers with a workplace free from recognized hazards that are likely to cause death or serious physical harm.",
+      "generated_answer": "According to the OSHA3021.pdf (p. 7), the General Duty Clause of the OSH Act requires employers to keep their workplaces free of serious recognized hazards. This means that employers have a responsibility to provide a safe and healthful workplace for their employees, and to eliminate or control hazards that could cause death or serious physical harm.",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 9,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 10,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 2,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 5,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 4,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 2,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What overall approach do OSHA's Safety and Health Program Management Guidelines promote?",
+      "expected_answer": "A proactive approach that finds and fixes hazards before they cause injury or illness, built on continuous improvement: start with a basic program and simple goals and grow from there by monitoring performance and evaluating outcomes.",
+      "generated_answer": "The overall approach promoted by OSHA's Safety and Health Program Management Guidelines is a proactive approach to managing workplace safety and health. This approach involves a continuous improvement mindset, where employers and workers work together to identify and address hazards before they cause injury or illness. The guidelines emphasize the importance of worker participation, hazard identification and assessment, hazard prevention and control, education and training, coordination and communication on multiemployer worksites, and program evaluation and improvement.\n\nThe guidelines also provide a framework for implementing a safety and health program, including core elements such as management, leadership, worker participation, hazard identification and assessment, hazard prevention and control, education and training, coordination and communication on multiemployer worksites, and program evaluation and improvement.\n\nOverall, the approach promoted by the guidelines is to use a proactive and continuous improvement mindset to manage workplace safety and health, and to involve workers and their representatives in all aspects of the program.",
+      "sources": [
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 5,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 33,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 1,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 8,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 7,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 35,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 5,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 33,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 1,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 8,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 7,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 35,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What happened in the fall protection incident where a steel erection worker removed his harness?",
+      "expected_answer": "A steel erection worker at Site A worked on scaffolding at about 14 feet without a personal fall arrest system after removing his harness because it restricted his movement; no guardrails or tie-off were in place. He was spotted and corrected before any injury occurred.",
+      "generated_answer": "Based on the incident report you provided, it appears that the steel erection worker removed his harness because it was restricting his movement while handling the beams. This is a clear violation of OSHA regulations, specifically 29 CFR 1926.501(b)(1) which requires fall protection at heights of 6 feet or more in construction.\n\nThe root cause analysis identifies the primary cause as the worker deliberately removing PPE due to perceived inconvenience during task execution. Contributing factors include inadequate pre-shift safety briefing and no continuous monitoring system in place to detect PPE removal during active work.\n\nCorrective actions include formal written warning and mandatory fall protection retraining for the worker, as well as additional safety measures such as pre-shift safety briefings that include task-specific fall protection checklists and the procurement of lighter-weight harness models to reduce worker discomfort complaints.\n\nIn summary, the incident report highlights the importance of adhering to OSHA regulations and ensuring that workers are properly trained and equipped to perform their jobs safely.",
+      "sources": [
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_report"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_report"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_report"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_report"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_report"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_report"
+        }
+      ],
+      "score": 5
+    }
+  ]
+}

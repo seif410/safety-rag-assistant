@@ -95,7 +95,7 @@ def get_history(session_id: str) -> InMemoryChatMessageHistory:
 @tool(response_format="content_and_artifact")
 def retrieve_safety_docs(query: str, doc_type: str | None = None):
     """Retrieve relevant safety documentation, regulations, or incident reports.
-    Optionally filter by doc_type: 'regulation', or 'incident_report'."""
+    Optionally filter by doc_type: 'regulation', or 'incident_reports'."""
     docs = retrieve_with_filter(query, doc_type)
     serialized = "\n\n".join(
         f"Source: {doc.metadata.get('filename','unknown')} (p.{doc.metadata.get('page','')})"
@@ -111,7 +111,7 @@ SYSTEM_PROMPT = (
     "You answer questions about OSHA regulations, safety procedures, and incident reports. "
     "Use the retrieve_safety_docs tool to find relevant information before answering. "
     "Always cite sources with document name and page number. "
-    "If the user asks about a specific document type (regulation vs incident report), "
+    "If the user asks about a specific document type (regulation vs incident_reports), "
     "use the doc_type filter. "
     "If you cannot find the answer in retrieved documents, say so clearly."
 )
