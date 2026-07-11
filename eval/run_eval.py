@@ -18,7 +18,6 @@ Run from the project root:
 """
 
 import json
-import logging
 import re
 import time
 from datetime import datetime
@@ -27,29 +26,20 @@ from pathlib import Path
 from langchain.chat_models import init_chat_model
 
 from app.config import settings
+from logger import log_header, log_info, log_success, log_warning
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
-    datefmt="%H:%M:%S",
-)
-logger = logging.getLogger("eval")
-
-# retrieve_with_filter already reranks internally (retrieval_k -> top_n), so the
-# eval does NOT rerank again. _extract_text flattens block-list message content
-# to a plain string (some providers return content blocks, not a bare string).
+# retrieve_with_filter reranks internally (no second rerank here). _extract_text
+# flattens block-list message content some providers return into a plain string.
 from app.core.rag_chain import retrieve_with_filter, run_query, _extract_text
 
 EVAL_DIR = Path(__file__).resolve().parent
 DATASET_PATH = EVAL_DIR / "eval_dataset.json"
 RESULTS_DIR = EVAL_DIR / "results"
 
-# Seconds to pause between questions in the faithfulness loop so the agent +
-# judge Groq calls stay under the free-tier per-minute rate limit.
+# Pause between questions so Gemini calls stay under the per-minute rate limit.
 EVAL_SLEEP_SECONDS = 2.0
 
-# Judge is told to reply with only the number; grab the first 1-5 digit anyway
-# so stray formatting ("Score: 4", "4/5") still parses.
+# Grab first 1-5 digit so stray formatting ("Score: 4", "4/5") still parses.
 _SCORE_RE = re.compile(r"[1-5]")
 
 _JUDGE_PROMPT = """Rate how well the generated answer matches the expected answer.
@@ -64,37 +54,50 @@ def load_eval_set(path: Path = DATASET_PATH) -> list[dict]:
         return json.load(f)
 
 
-def eval_retrieval_precision(eval_set: list[dict]) -> tuple[float, list[dict]]:
-    """Fraction of questions whose expected source appears in retrieved results.
+def eval_retrieval(eval_set: list[dict], ks: tuple[int, ...] = (1, 3, 5)):
+    """Retrieval quality via hit-rate@k and MRR — no LLM/judge calls.
 
-    Returns the precision plus per-question detail for the results file.
+    hit-rate@k: fraction of questions whose expected source appears in top-k.
+    MRR: mean reciprocal rank of the first chunk from the expected source
+    (0 if absent). Whole-corpus path (no doc_type filter) for honest end-to-end.
     """
-    logger.info("Retrieval precision: evaluating %d questions", len(eval_set))
+    log_header(f"Retrieval eval: {len(eval_set)} questions")
     results = []
     for i, item in enumerate(eval_set, 1):
-        logger.info("  [%d/%d] retrieving: %.60s", i, len(eval_set), item["question"])
-        # No doc_type filter: honest whole-corpus retrieval. retrieve_with_filter
-        # returns the already-reranked top_n documents.
         docs = retrieve_with_filter(item["question"])
-        retrieved_sources = [doc.metadata.get("filename") for doc in docs]
-        hit = item["expected_source"] in retrieved_sources
-        logger.info("  [%d/%d] %s", i, len(eval_set), "HIT" if hit else "MISS")
+        ranked_sources = [doc.metadata.get("filename") for doc in docs]
+        expected = item["expected_source"]
+        # 1-indexed rank of the first retrieved chunk from the expected source.
+        rank = next(
+            (r for r, src in enumerate(ranked_sources, 1) if src == expected),
+            None,
+        )
+        hits = {f"hit@{k}": (rank is not None and rank <= k) for k in ks}
+        log = log_success if rank else log_warning
+        log(
+            f"[{i}/{len(eval_set)}] {'HIT' if rank else 'MISS'}  "
+            f"rank={rank}  {item['question'][:55]}"
+        )
         results.append(
             {
                 "question": item["question"],
-                "expected_source": item["expected_source"],
-                "retrieved_sources": retrieved_sources,
-                "hit": hit,
+                "expected_source": expected,
+                "retrieved_sources": ranked_sources,
+                "rank": rank,
+                "reciprocal_rank": (1.0 / rank) if rank else 0.0,
+                **hits,
             }
         )
-    precision = sum(r["hit"] for r in results) / len(results) if results else 0.0
-    logger.info(
-        "Retrieval precision: %.1f%% (%d/%d hits)",
-        precision * 100,
-        sum(r["hit"] for r in results),
-        len(results),
+    n = len(results)
+    metrics = (
+        {f"hit_rate@{k}": sum(r[f"hit@{k}"] for r in results) / n for k in ks}
+        if n
+        else {}
     )
-    return precision, results
+    metrics["mrr"] = sum(r["reciprocal_rank"] for r in results) / n if n else 0.0
+    for name, val in metrics.items():
+        log_info(f"Retrieval {name}: {val:.3f}")
+    return metrics, results
 
 
 def _judge_score(judge, expected: str, generated: str) -> int:
@@ -114,9 +117,9 @@ def _judge_score(judge, expected: str, generated: str) -> int:
 
 def eval_answer_faithfulness(eval_set: list[dict]) -> tuple[float, list[dict]]:
     """LLM-as-judge answer quality, normalized to 0-1, plus per-question detail."""
-    logger.info(
-        "Answer faithfulness: evaluating %d questions (agent + judge per question)",
-        len(eval_set),
+    log_header(
+        f"Answer faithfulness: evaluating {len(eval_set)} questions "
+        "(agent + judge per question)"
     )
     judge = init_chat_model(
         model=settings.chat_model,
@@ -125,14 +128,11 @@ def eval_answer_faithfulness(eval_set: list[dict]) -> tuple[float, list[dict]]:
     )
     results = []
     for i, item in enumerate(eval_set):
-        logger.info(
-            "  [%d/%d] running agent: %.60s", i + 1, len(eval_set), item["question"]
-        )
-        # Unique session per item so conversational memory from one question does
-        # not bleed into the next.
+        log_info(f"[{i + 1}/{len(eval_set)}] running agent: {item['question'][:60]}")
+        # Unique session per item so memory doesn't bleed between questions.
         result = run_query(item["question"], session_id=f"eval-{i}")
         score = _judge_score(judge, item["expected_answer"], result["answer"])
-        logger.info("  [%d/%d] judge score: %d/5", i + 1, len(eval_set), score)
+        log_info(f"[{i + 1}/{len(eval_set)}] judge score: {score}/5")
         results.append(
             {
                 "question": item["question"],
@@ -142,12 +142,12 @@ def eval_answer_faithfulness(eval_set: list[dict]) -> tuple[float, list[dict]]:
                 "score": score,
             }
         )
-        # Space out Groq calls to stay under the per-minute rate limit.
+        # Space out Gemini calls to stay under the per-minute rate limit.
         time.sleep(EVAL_SLEEP_SECONDS)
     faithfulness = (
         sum(r["score"] for r in results) / (len(results) * 5) if results else 0.0
     )
-    logger.info("Answer faithfulness: %.1f%%", faithfulness * 100)
+    log_success(f"Answer faithfulness: {faithfulness * 100:.1f}%")
     return faithfulness, results
 
 
@@ -160,32 +160,38 @@ def save_results(payload: dict) -> Path:
     return out_path
 
 
-def main() -> None:
-    logger.info("Loading eval dataset from %s", DATASET_PATH)
+def main(with_faithfulness: bool = False) -> None:
+    log_info(f"Loading eval dataset from {DATASET_PATH}")
     eval_set = load_eval_set()
-    logger.info("Loaded %d Q&A pairs", len(eval_set))
+    log_success(f"Loaded {len(eval_set)} Q&A pairs")
 
-    precision, retrieval_results = eval_retrieval_precision(eval_set)
-    faithfulness, faithfulness_results = eval_answer_faithfulness(eval_set)
+    metrics, retrieval_results = eval_retrieval(eval_set)
 
-    print(f"Retrieval Precision:  {precision:.1%}")
-    print(f"Answer Faithfulness:  {faithfulness:.1%}")
+    payload = {
+        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "dataset_size": len(eval_set),
+        "metrics": {"retrieval": metrics},
+        "retrieval": retrieval_results,
+    }
 
-    out_path = save_results(
-        {
-            "timestamp": datetime.now().isoformat(timespec="seconds"),
-            "dataset_size": len(eval_set),
-            "metrics": {
-                "retrieval_precision": precision,
-                "answer_faithfulness": faithfulness,
-            },
-            "retrieval": retrieval_results,
-            "faithfulness": faithfulness_results,
-        }
-    )
-    logger.info("Saved results to %s", out_path)
-    print(f"Saved results to {out_path}")
+    print("Retrieval metrics:")
+    for k, v in metrics.items():
+        print(
+            f"  {k:12s} {v:.1%}" if k.startswith("hit_rate") else f"  {k:12s} {v:.3f}"
+        )
+
+    # Faithfulness hits the Gemini quota — only when explicitly requested.
+    if with_faithfulness:
+        faithfulness, faithfulness_results = eval_answer_faithfulness(eval_set)
+        payload["metrics"]["answer_faithfulness"] = faithfulness
+        payload["faithfulness"] = faithfulness_results
+        print(f"  {'faithfulness':12s} {faithfulness:.1%}")
+
+    out_path = save_results(payload)
+    log_success(f"Saved results to {out_path}")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main(with_faithfulness="--faithfulness" in sys.argv)
