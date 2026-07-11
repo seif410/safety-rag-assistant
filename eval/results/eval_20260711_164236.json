@@ -1,0 +1,722 @@
+{
+  "timestamp": "2026-07-11T16:40:03",
+  "dataset_size": 15,
+  "metrics": {
+    "retrieval": {
+      "hit_rate@1": 0.9333333333333333,
+      "hit_rate@3": 1.0,
+      "hit_rate@5": 1.0,
+      "mrr": 0.9666666666666667
+    },
+    "answer_faithfulness": 0.8666666666666667
+  },
+  "retrieval": [
+    {
+      "question": "Who is required to pay for the personal protective equipment that workers need on the job?",
+      "expected_source": "OSHA3021.pdf",
+      "retrieved_sources": [
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "Which law gives workers the right to a safe workplace and created OSHA?",
+      "expected_source": "OSHA3021.pdf",
+      "retrieved_sources": [
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What does the General Duty Clause of the OSH Act require of employers?",
+      "expected_source": "SHPM_guidelines.pdf",
+      "retrieved_sources": [
+        "OSHA3021.pdf",
+        "SHPM_guidelines.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf"
+      ],
+      "rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What overall approach do OSHA's Safety and Health Program Management Guidelines promote?",
+      "expected_source": "SHPM_guidelines.pdf",
+      "retrieved_sources": [
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf",
+        "SHPM_guidelines.pdf"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "Can workers file a complaint with OSHA, and are they protected if they do?",
+      "expected_source": "OSHA3021.pdf",
+      "retrieved_sources": [
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf",
+        "OSHA3021.pdf"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What happened in the fall protection incident where a steel erection worker removed his harness?",
+      "expected_source": "incident_report_001.md",
+      "retrieved_sources": [
+        "incident_report_001.md",
+        "incident_report_001.md",
+        "incident_report_001.md",
+        "incident_report_006.md"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What PPE should the electrician have worn during the 480V maintenance work?",
+      "expected_source": "incident_report_002.md",
+      "retrieved_sources": [
+        "incident_report_002.md",
+        "incident_report_002.md",
+        "incident_report_002.md",
+        "SHPM_guidelines.pdf"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What caused the head protection PPE violation during concrete finishing at Site A?",
+      "expected_source": "incident_report_003.md",
+      "retrieved_sources": [
+        "incident_report_003.md",
+        "incident_report_003.md",
+        "incident_report_001.md",
+        "incident_report_008.md"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What happened in the warehouse forklift incident on Site B?",
+      "expected_source": "incident_report_004.md",
+      "retrieved_sources": [
+        "incident_report_004.md",
+        "incident_report_004.md",
+        "incident_report_004.md",
+        "incident_report_006.md"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "Why did the confined space entry incident at the chemical storage tank occur?",
+      "expected_source": "incident_report_005.md",
+      "retrieved_sources": [
+        "incident_report_005.md",
+        "incident_report_005.md",
+        "incident_report_005.md",
+        "incident_report_001.md"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What led to the scaffolding collapse at Building 3 on Site B?",
+      "expected_source": "incident_report_006.md",
+      "retrieved_sources": [
+        "incident_report_006.md",
+        "incident_report_006.md",
+        "incident_report_006.md",
+        "incident_report_001.md"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "How did the hot work fire start during welding at Building 1?",
+      "expected_source": "incident_report_007.md",
+      "retrieved_sources": [
+        "incident_report_007.md",
+        "incident_report_007.md",
+        "incident_report_007.md",
+        "SHPM_guidelines.pdf"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What was the high-visibility PPE near-miss on the night shift at Site B?",
+      "expected_source": "incident_report_008.md",
+      "retrieved_sources": [
+        "incident_report_008.md",
+        "incident_report_008.md",
+        "incident_report_008.md",
+        "incident_report_003.md"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "Why were the sandblasting workers at risk in the respiratory protection incident?",
+      "expected_source": "incident_report_009.md",
+      "retrieved_sources": [
+        "incident_report_009.md",
+        "incident_report_009.md",
+        "incident_report_009.md",
+        "SHPM_guidelines.pdf"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    },
+    {
+      "question": "What caused the crane to drop the concrete wall panel at Site B?",
+      "expected_source": "incident_report_010.md",
+      "retrieved_sources": [
+        "incident_report_010.md",
+        "incident_report_010.md",
+        "incident_report_010.md",
+        "incident_report_006.md"
+      ],
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true
+    }
+  ],
+  "faithfulness": [
+    {
+      "question": "Who is required to pay for the personal protective equipment that workers need on the job?",
+      "expected_answer": "The employer must provide required protective equipment to workers free of charge.",
+      "generated_answer": "According to OSHA regulations (OSHA3021.pdf, p. 8 and 11), employers are required to provide most personal protective equipment free of charge to their employees. This is stated in the \"Right to be Provided Protective Equipment Free of Charge\" section, which emphasizes that employers must provide necessary protective equipment to ensure a safe working environment. Additionally, the \"Employer Responsibilities\" section (p. 4) highlights that employers are responsible for finding and correcting safety and health problems, and that they must provide a workplace that does not have serious hazards.",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 6,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 11,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 4,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 10,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "Which law gives workers the right to a safe workplace and created OSHA?",
+      "expected_answer": "The Occupational Safety and Health Act of 1970 (OSH Act) gives workers the right to safe and healthful working conditions and created OSHA.",
+      "generated_answer": "The law that gives workers the right to a safe workplace and created OSHA is the Occupational Safety and Health Act of 1970 (OSH Act), as stated in the OSHA3021.pdf document (p.5). This law requires employers to provide their employees with working conditions that are free of known dangers and created the Occupational Safety and Health Administration (OSHA) to set and enforce protective workplace safety and health standards.",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 5,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 4,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 11,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 6,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What does the General Duty Clause of the OSH Act require of employers?",
+      "expected_answer": "The General Duty Clause, Section 5(a)(1), requires employers to provide their workers with a workplace free from recognized hazards that are likely to cause death or serious physical harm.",
+      "generated_answer": "The General Duty Clause of the OSH Act requires employers to provide a safe and healthful workplace that is free from serious recognized hazards. This means that employers must take steps to identify and mitigate potential hazards in the workplace, even if there is no specific OSHA standard that applies to the hazard. Employers must also provide personal protective equipment to their employees free of charge, train workers on how to protect themselves from hazards, and comply with all applicable OSHA standards and regulations. (Source: OSHA3021.pdf, p. 9-10, SHPM_guidelines.pdf, p.2)",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 9,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 2,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 10,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 4,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 4
+    },
+    {
+      "question": "What overall approach do OSHA's Safety and Health Program Management Guidelines promote?",
+      "expected_answer": "A proactive approach that finds and fixes hazards before they cause injury or illness, built on continuous improvement: start with a basic program and simple goals and grow from there by monitoring performance and evaluating outcomes.",
+      "generated_answer": "The overall approach that OSHA's Safety and Health Program Management Guidelines promote is a proactive and continuous improvement approach to managing workplace safety and health. The guidelines recognize that finding and fixing hazards before they cause injury or illness is a far more effective approach than traditional reactive approaches. The guidelines provide a flexible framework for addressing safety and health issues in diverse workplaces and are intended for use in any workplace, but will be particularly helpful in small and medium-sized workplaces. The core elements of the guidelines include management leadership, worker participation, hazard identification and assessment, hazard prevention and control, education and training, coordination and communication on multiemployer worksites, and program evaluation and improvement. (Source: SHPM_guidelines.pdf, pages 5, 8, 10)",
+      "sources": [
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 5,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 8,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 10,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 7,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "Can workers file a complaint with OSHA, and are they protected if they do?",
+      "expected_answer": "Yes. Workers have the right to file a confidential complaint with OSHA asking it to inspect their workplace, and it is illegal for an employer to retaliate against a worker for exercising their rights under the OSH Act, including filing a complaint or reporting an injury.",
+      "generated_answer": "Workers can file a complaint with OSHA, and they are protected if they do. According to OSHA3021.pdf (p.13), workers or their representatives may file a written complaint and ask OSHA to inspect their workplace if they believe there is a serious hazard or that their employer is not following OSHA standards or rules. The complaint can be filed online, by fax, mail, or email, and workers have the right to request that OSHA not disclose their identity to their employer. It is a violation of the OSH Act for an employer to fire, demote, transfer, or retaliate in any way against a worker for filing a complaint or using other OSHA rights (OSHA3021.pdf, p.13).",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 13,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 4,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 14,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 5,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What happened in the fall protection incident where a steel erection worker removed his harness?",
+      "expected_answer": "A steel erection worker at Site A worked on scaffolding at about 14 feet without a personal fall arrest system after removing his harness because it restricted his movement; no guardrails or tie-off were in place. He was spotted and corrected before any injury occurred.",
+      "generated_answer": "According to incident_report_001.md (p. 2), a steel erection worker removed his harness while working at a height of approximately 14 feet without wearing a personal fall arrest system, but no injuries occurred as the situation was identified and corrected before an incident took place. The worker stated he had removed his harness because it was restricting his movement while handling the beams. The root cause analysis identified the primary cause as the worker deliberately removing PPE due to perceived inconvenience during task execution, with contributing factors including inadequate pre-shift safety briefing and the supervisor not being present on the upper level during the work activity. The corrective actions included the worker receiving formal written warning and mandatory fall protection retraining, the supervisor maintaining visual contact with elevated workers, and the procurement of lighter-weight harness models to reduce worker discomfort complaints.",
+      "sources": [
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What PPE should the electrician have worn during the 480V maintenance work?",
+      "expected_answer": "Class 00 insulated gloves rated for electrical work, instead of the standard leather gloves he was actually wearing.",
+      "generated_answer": "The electrician should have worn PPE such as insulating gloves, safety glasses, and a hard hat during the 480V maintenance work (Source: 29 CFR 1910.137, SHPM_guidelines.pdf p.38). Additionally, the electrician should have followed safe work practices, such as ensuring the equipment was de-energized before starting work, using lockout/tagout procedures, and maintaining a safe distance from energized parts (Source: 29 CFR 1910.331-335, SHPM_guidelines.pdf p.22). It is also important to note that the employer should have provided training on the use of PPE and safe work practices, and ensured that the electrician was qualified to perform the work (Source: 29 CFR 1910.332, SHPM_guidelines.pdf p.19).",
+      "sources": [
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 38,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 22,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 19,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 42,
+          "doc_type": "regulation"
+        }
+      ],
+      "score": 2
+    },
+    {
+      "question": "What caused the head protection PPE violation during concrete finishing at Site A?",
+      "expected_answer": "Three workers performed concrete finishing under an active overhead crane operation without hard hats; their hard hats were left in the break room and they had skipped PPE to avoid a concrete batch timeout. No injury occurred and work was stopped until they donned hard hats.",
+      "generated_answer": "The head protection PPE violation during concrete finishing at Site A was caused by workers prioritizing task urgency over PPE compliance, as stated in incident_report_003.md (p.). The primary cause was that workers started the concrete pour quickly to avoid a batch timeout and did not have their hard hats with them because they were stored in the break room, which was not adjacent to the work area (Source: incident_report_003.md, p.).",
+      "sources": [
+        {
+          "filename": "incident_report_003.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_003.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_003.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_003.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What happened in the warehouse forklift incident on Site B?",
+      "expected_answer": "A forklift operator struck a pedestrian at a warehouse aisle intersection because a load stacked to about 1.8 meters obstructed forward visibility and the operator did not travel in reverse. The pedestrian suffered a minor tibia fracture and 14 lost workdays.",
+      "generated_answer": "According to incident_report_004.md (p. 2), the warehouse forklift incident on Site B occurred on June 3, 2024, when a forklift operator struck a pedestrian worker at an intersection, resulting in a minor fracture to the pedestrian's left leg. The incident was caused by the forklift operator traveling with an elevated load that obstructed their forward line of sight, and contributing factors included the lack of convex mirrors at intersections and poorly marked pedestrian walkways. Corrective actions were taken, including a 24-hour safety stand-down, operator retraining, and the installation of convex mirrors and proximity alert systems on forklifts.",
+      "sources": [
+        {
+          "filename": "incident_report_004.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_004.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_004.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_008.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 4
+    },
+    {
+      "question": "Why did the confined space entry incident at the chemical storage tank occur?",
+      "expected_answer": "Two workers entered a former solvent storage tank without the required atmospheric testing; the entry permit's atmospheric monitoring section was left blank but signed off by the supervisor. The lead worker became dizzy from residual solvent vapors that exceeded the permissible exposure limit.",
+      "generated_answer": "The confined space entry incident at the chemical storage tank occurred due to inadequate atmospheric testing before entry, improper authorization of the entry permit by the supervisor, and the lack of a trained attendant stationed at the tank opening during entry. According to incident_report_005.md (p. 1-3), these oversights led to the exposure of the maintenance workers to residual solvent vapors, resulting in one worker experiencing dizziness, nausea, and headache. The root causes identified include failure to perform atmospheric testing, improper permit authorization, and systemic issues with the permit-to-work process. Corrective actions were implemented, including retraining, revisions to the permit-to-work process, and procurement of four-gas monitors.",
+      "sources": [
+        {
+          "filename": "incident_report_005.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_005.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_005.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_007.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 4
+    },
+    {
+      "question": "What led to the scaffolding collapse at Building 3 on Site B?",
+      "expected_answer": "Tubular frame scaffolding collapsed because it was erected by unqualified personnel: base plates sat on unprepared sandy soil without mudsills, cross-bracing was missing from two lower bays, and workers added an unsecured cantilevered plank extension. Two workers fell from about 9 meters.",
+      "generated_answer": "The scaffolding collapse at Building 3 on Site B was caused by a combination of factors, including the scaffold being erected by unqualified personnel, base plates being placed on unprepared ground without mudsills, missing cross-bracing in lower bays, and unauthorized modifications to the scaffold. The incident resulted in two workers being injured, with one fracturing their right wrist and the other suffering bruised ribs and lacerations. The root cause analysis identified a systemic issue with the lack of scaffold inspection by a competent person before workers were allowed on the platform. The incident led to the implementation of corrective actions, including the rebuilding of all scaffolding on-site by certified scaffold erectors, mandatory competent person inspections, and the addition of ground preparation requirements to the scaffold erection checklist. (Source: incident_report_006.md, p. 1-5)",
+      "sources": [
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 4
+    },
+    {
+      "question": "How did the hot work fire start during welding at Building 1?",
+      "expected_answer": "Welding sparks and slag fell through open grating onto cardboard packaging stored about 4 meters below, within the 35-foot hot work exclusion zone; no spark containment barrier was in place and the fire watch had no line of sight to the area below. A worker extinguished it with no injuries.",
+      "generated_answer": "The hot work fire started during welding at Building 1 when sparks and slag from the welding operations fell through open grating onto a stack of cardboard packaging material stored below, igniting a fire (Source: incident_report_007.md, p. 1). The root causes of the incident included combustible materials being stored within the hot work exclusion zone, open grating allowing sparks to fall to the level below without containment, and inadequate fire watch positioning (Source: incident_report_007.md, p. 2). The incident resulted in no injuries, but it led to the implementation of corrective actions, including revisions to the hot work permit process, fire watch protocol, and storage of combustible materials (Source: incident_report_007.md, p. 3).",
+      "sources": [
+        {
+          "filename": "incident_report_007.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_007.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_007.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_002.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 5
+    },
+    {
+      "question": "What was the high-visibility PPE near-miss on the night shift at Site B?",
+      "expected_answer": "A maintenance technician crossed the main vehicle access road at night in dark clothing without a high-visibility vest and was nearly struck by a delivery truck, which braked and stopped about 1.5 meters away. His vest was in his locker across the road.",
+      "generated_answer": "The high-visibility PPE near-miss on the night shift at Site B occurred on August 19, 2024, when a worker crossed the main vehicle access road on foot without wearing a high-visibility vest (Source: incident_report_008.md, p. 1). The worker was wearing dark-colored clothing and was not visible to the driver of a delivery truck, which stopped approximately 1.5 meters from the worker (Source: incident_report_008.md, p. 2). The root cause analysis identified that the worker did not wear the required high-visibility PPE during nighttime operations, and contributing factors included the emergency call-in procedure not including a PPE readiness check and the lack of high-visibility vests at the pedestrian gate entry point (Source: incident_report_008.md, p. 3). The incident violated OSHA standard 29 CFR 1926.651(d), which requires employees exposed to vehicular traffic to wear high-visibility garments (Source: incident_report_008.md, p. 4). Corrective actions included installing high-visibility vest stations at pedestrian entry gates, updating the emergency call-in procedure, and installing reflective ground markings and pedestrian crossing signals (Source: incident_report_008.md, p. 5).",
+      "sources": [
+        {
+          "filename": "incident_report_008.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_008.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_008.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_003.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 4
+    },
+    {
+      "question": "Why were the sandblasting workers at risk in the respiratory protection incident?",
+      "expected_answer": "Four workers sandblasting a steel structure wore only nuisance dust masks instead of NIOSH-approved abrasive blasting or supplied-air respirators; airborne crystalline silica measured 0.15 mg/m3, three times the OSHA permissible exposure limit of 0.05 mg/m3.",
+      "generated_answer": "The sandblasting workers were at risk in the respiratory protection incident because they were wearing basic dust masks instead of the required NIOSH-approved supplied-air respirators or abrasive blasting respirators, exposing them to airborne silica dust concentrations that were three times the OSHA permissible exposure limit (Source: incident_report_009.md, p. 1).",
+      "sources": [
+        {
+          "filename": "incident_report_009.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_009.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_009.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_003.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 4
+    },
+    {
+      "question": "What caused the crane to drop the concrete wall panel at Site B?",
+      "expected_answer": "A wire rope sling with visible broken wires and corrosion failed during the lift because the pre-use rigging inspection was inadequate; a roughly 2,400 kg panel fell about 6 meters into an area with no established exclusion zone. Workers moved clear and one sustained a minor laceration.",
+      "generated_answer": "The crane dropped the concrete wall panel at Site B due to the failure of the rigging sling on the left side of the panel, which had visible broken wires and corrosion that should have been identified during pre-use inspection. According to incident_report_010.md (p.), the primary cause of the incident was the use of defective rigging equipment, and contributing factors included inadequate pre-lift rigging inspection, no exclusion zone established around the lift area, and the signal person not enforcing area clearance before the lift commenced.",
+      "sources": [
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "score": 4
+    }
+  ]
+}
