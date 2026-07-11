@@ -1,20 +1,22 @@
 """Offline evaluation for the Safety RAG Assistant.
 
-Two metrics over a hand-written Q&A set (``eval_dataset.json``):
+Two families of metrics over a hand-written Q&A set (``eval_dataset.json``):
 
-- **Retrieval precision** — for each question, does the expected source document
-  appear among the retrieved+reranked chunks? Uses the general (no doc_type
-  filter) retrieval path, so it measures end-to-end retrieval quality.
-- **Answer faithfulness** — LLM-as-judge scores how well the generated answer
-  matches the expected answer (1-5), normalized to 0-1.
+- **Retrieval** (always run, no LLM) — for each question, where does the expected
+  source document rank among the retrieved+reranked chunks? Reported as
+  hit-rate@k (k=1,3,5) and MRR. Uses the general (no doc_type filter) retrieval
+  path, so it measures end-to-end retrieval quality.
+- **Answer faithfulness** (opt-in via ``--faithfulness``) — LLM-as-judge scores
+  how well the generated answer matches the expected answer (1-5), normalized to
+  0-1. Runs the full agent once per question, so it costs Gemini + Cohere calls.
 
 Requires the full stack to be reachable: Qdrant running with the corpus already
-ingested, plus NVIDIA / Cohere / Google API keys in ``.env``. Answer faithfulness
-runs the full agent once per question, so it costs Gemini + Cohere calls.
+ingested, plus NVIDIA / Cohere / Google API keys in ``.env``.
 
 Run from the project root:
 
-    python -m eval.run_eval
+    python -m eval.run_eval                # retrieval metrics only
+    python -m eval.run_eval --faithfulness # also run the LLM-as-judge pass
 """
 
 import json

@@ -138,10 +138,9 @@ the expected source document is retrieved and how faithful the generated answer 
 | Hit-rate@3 | 100% | 15 questions |
 | Hit-rate@5 | 100% | 15 questions |
 | MRR | 0.967 | 15 questions |
-| Answer faithfulness (LLM-as-judge) | 100% | 4-question run |
 
-Retrieval numbers are from the run on 2026-07-11 (`eval/results/`). Faithfulness runs the full
-agent plus an LLM judge per question and was last measured on a 4-question subset.
+Retrieval numbers are from the run on 2026-07-11 (`eval/results/`). Answer faithfulness is
+opt-in (`--faithfulness`) and runs the full agent plus an LLM judge per question.
 
 ```bash
 python -m eval.run_eval                # retrieval metrics only
