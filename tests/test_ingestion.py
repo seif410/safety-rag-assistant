@@ -7,6 +7,7 @@ tests exercise the pure extract/chunk/dispatch logic offline.
 import asyncio
 from unittest.mock import AsyncMock, patch
 
+import pytest
 from langchain_core.documents import Document
 
 from app.core import ingestion
@@ -60,12 +61,8 @@ def test_chunk_documents_splits_and_preserves_metadata():
 
 
 def test_ingest_file_rejects_unsupported_extension():
-    try:
+    with pytest.raises(ValueError, match="Unsupported file type"):
         asyncio.run(ingest_file("notes.txt"))
-    except ValueError as e:
-        assert "Unsupported file type" in str(e)
-    else:
-        raise AssertionError("expected ValueError for .txt")
 
 
 def test_ingest_file_no_content_skips_indexing(tmp_path):
