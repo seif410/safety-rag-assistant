@@ -166,6 +166,22 @@ uv sync                                        # install dependencies
 uvicorn app.main:app --reload --port 8000      # run the API
 ```
 
+## Testing
+
+31 tests (`tests/`) run fully offline — `tests/conftest.py` sets dummy secrets and
+mocks the Qdrant / NVIDIA / Cohere clients, so **no Docker, running Qdrant, or real
+API keys are needed**. They cover the API routes, ingestion pipeline, retrieval
+layer, and Pydantic schemas.
+
+```bash
+uv sync --extra dev   # install pytest + httpx (dev extras)
+uv run pytest         # run the suite
+uv run pytest -q      # quieter output
+```
+
+pytest is configured in `pyproject.toml` (`pythonpath = ["."]`, `testpaths = ["tests"]`),
+so `uv run pytest` from the repo root discovers everything with no extra flags.
+
 ## Project layout
 
 ```
@@ -179,6 +195,7 @@ app/
   main.py              App entrypoint
 data/                  Corpus (incident reports committed, OSHA PDFs downloaded)
 eval/                  Evaluation dataset, runner, and results
+tests/                 Offline pytest suite (clients mocked in conftest.py)
 ```
 
 ## License
