@@ -25,4 +25,14 @@ dev = [
     "ipykernel",
     "black",
     "isort",
+    "pytest>=8.0",
+    "httpx",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = [
+    # Starlette's TestClient nudges toward httpx2; httpx works fine, don't add a dep.
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated",
 ]
