@@ -16,8 +16,8 @@ actually needs:
   the top 4 before generation.
 - **Dual document types** — formal PDFs (OSHA regulations) and unstructured Markdown field
   reports, ingested through one pipeline.
-- **Offline evaluation** — a hand-written Q&A set scored with hit-rate@k, MRR, and an
-  LLM-as-judge faithfulness metric (see [Evaluation](#evaluation)).
+- **Offline evaluation** — a hand-written Q&A set scored with hit-rate@k and MRR
+  (see [Evaluation](#evaluation)).
 - **Self-hosted, API-first** — Qdrant runs locally via Docker (no vector-DB API key), FastAPI
   serves the endpoints, and conversational memory is kept per session.
 
@@ -130,7 +130,7 @@ not start without them.
 ## Evaluation
 
 Offline eval over a 15-question hand-written set (`eval/eval_dataset.json`), measuring whether
-the expected source document is retrieved and how faithful the generated answer is.
+the expected source document is retrieved for each question.
 
 | Metric | Score | Dataset |
 |---|---|---|
@@ -139,12 +139,10 @@ the expected source document is retrieved and how faithful the generated answer 
 | Hit-rate@5 | 100% | 15 questions |
 | MRR | 0.967 | 15 questions |
 
-Retrieval numbers are from the run on 2026-07-11 (`eval/results/`). Answer faithfulness is
-opt-in (`--faithfulness`) and runs the full agent plus an LLM judge per question.
+Numbers are from the run on 2026-07-11 (`eval/results/`).
 
 ```bash
-python -m eval.run_eval                # retrieval metrics only
-python -m eval.run_eval --faithfulness # also run the LLM-as-judge faithfulness pass
+python -m eval.run_eval
 ```
 
 Requires Qdrant running with the corpus already ingested, plus the API keys in `.env`.
