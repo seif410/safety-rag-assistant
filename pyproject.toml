@@ -3,6 +3,8 @@ name = "safety-rag-assistant"
 version = "0.1.0"
 description = "RAG-powered Q&A over OSHA safety regulations and incident reports"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "fastapi",

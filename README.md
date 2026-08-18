@@ -1,5 +1,7 @@
 # safety-rag-assistant
 
+![CI](https://github.com/seif410/safety-rag-assistant/actions/workflows/ci.yml/badge.svg)
+
 RAG-powered Q&A over OSHA safety regulations and incident reports — ask natural-language
 questions and get source-cited answers across two document types (formal regulations and
 field incident reports).
@@ -180,6 +182,33 @@ uv run pytest -q      # quieter output
 pytest is configured in `pyproject.toml` (`pythonpath = ["."]`, `testpaths = ["tests"]`),
 so `uv run pytest` from the repo root discovers everything with no extra flags.
 
+## Continuous integration
+
+`.github/workflows/ci.yml` runs on every push and pull request targeting `main`. Three jobs
+run in parallel on `ubuntu-latest`:
+
+| Job | Command | Purpose |
+|---|---|---|
+| Lint (black, isort) | `uv run black --check .` · `uv run isort --check-only .` | Formatting gate — check-only, never rewrites |
+| Tests (pytest) | `uv run pytest` | Full offline suite |
+| Docker build | `docker build .` | Verifies the image builds; no registry login or push |
+
+The lint and test jobs set up Python 3.12 through `astral-sh/setup-uv` and install from the
+lockfile with `uv sync --frozen --extra dev`, caching on `uv.lock`. The Docker job only checks
+out and builds — no Python setup.
+
+No secrets are configured — the test suite mocks the Qdrant / NVIDIA / Cohere clients, so CI
+needs no API keys or running services. Concurrent runs on the same ref cancel in-progress.
+
+Reproduce the lint gate locally before pushing:
+
+```bash
+uv run black --check .
+uv run isort --check-only .
+```
+
+Drop the flags (`uv run black .`, `uv run isort .`) to apply the formatting instead of checking it.
+
 ## Project layout
 
 ```
@@ -198,4 +227,4 @@ tests/                 Offline pytest suite (clients mocked in conftest.py)
 
 ## License
 
-No license file yet — usage terms are unspecified until one is added.
+MIT — see [LICENSE](LICENSE).
