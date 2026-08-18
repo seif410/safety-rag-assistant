@@ -1,13 +1,14 @@
 from fastapi import APIRouter, HTTPException
+
+from app.core.ingestion import ingest_file
+from app.core.rag_chain import list_indexed_sources, run_query
 from app.models.schemas import (
-    QueryRequest,
-    QueryResponse,
     IngestRequest,
     IngestResponse,
+    QueryRequest,
+    QueryResponse,
     SourcesResponse,
 )
-from app.core.rag_chain import run_query, list_indexed_sources
-from app.core.ingestion import ingest_file
 
 router = APIRouter()
 
@@ -38,4 +39,3 @@ async def list_sources():
     """List all indexed document sources."""
     sources = list_indexed_sources()
     return SourcesResponse(sources=sources, count=len(sources))
-

@@ -51,7 +51,9 @@ def test_ingest_success():
 
 def test_ingest_unsupported_type_returns_400():
     with patch.object(
-        routes, "ingest_file", new=AsyncMock(side_effect=ValueError("Unsupported file type: .txt"))
+        routes,
+        "ingest_file",
+        new=AsyncMock(side_effect=ValueError("Unsupported file type: .txt")),
     ):
         resp = client.post("/api/v1/ingest", json={"path": "notes.txt"})
     assert resp.status_code == 400

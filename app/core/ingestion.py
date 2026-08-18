@@ -1,15 +1,15 @@
 import asyncio
+from pathlib import Path
 
 import pymupdf
-
-from pathlib import Path
-from app.config import settings
 from langchain_core.documents import Document
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_qdrant import QdrantVectorStore
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
+
+from app.config import settings
 from logger import Colors, log_error, log_header, log_info, log_success, log_warning
 
 embeddings = NVIDIAEmbeddings(

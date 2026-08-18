@@ -1,16 +1,17 @@
-from app.config import settings
-from app.core.reranker import rerank_documents
-from app.core.ingestion import ensure_collection
+from langchain.agents import create_agent
+from langchain.chat_models import init_chat_model
+from langchain.messages import ToolMessage
+from langchain.tools import tool
+from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.documents import Document
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
-from qdrant_client.models import Filter, FieldCondition, MatchValue
-from langchain.chat_models import init_chat_model
-from langchain.agents import create_agent
-from langchain.tools import tool
-from langchain.messages import ToolMessage
-from langchain_core.chat_history import InMemoryChatMessageHistory
+from qdrant_client.models import FieldCondition, Filter, MatchValue
+
+from app.config import settings
+from app.core.ingestion import ensure_collection
+from app.core.reranker import rerank_documents
 
 client = QdrantClient(url=settings.qdrant_url)
 chat_histories: dict[str, InMemoryChatMessageHistory] = {}

@@ -1,5 +1,5 @@
-from app.config import settings
-from logger import log_info, log_success
+import logging
+
 from cohere.errors import TooManyRequestsError
 from langchain_cohere import CohereRerank
 from langchain_core.documents import Document
@@ -10,7 +10,9 @@ from tenacity import (
     stop_after_attempt,
     wait_exponential,
 )
-import logging
+
+from app.config import settings
+from logger import log_info, log_success
 
 logger = logging.getLogger(__name__)
 

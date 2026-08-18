@@ -29,7 +29,11 @@ def test_extract_text_joins_text_blocks():
 
 
 def test_extract_text_ignores_non_text_blocks_keeps_strings():
-    content = [{"type": "reasoning", "text": "skip"}, "kept", {"type": "text", "text": "!"}]
+    content = [
+        {"type": "reasoning", "text": "skip"},
+        "kept",
+        {"type": "text", "text": "!"},
+    ]
     assert _extract_text(content) == "kept!"
 
 
@@ -43,8 +47,12 @@ def test_extract_text_stringifies_other_types():
 def test_retrieve_with_filter_no_doc_type_omits_filter():
     retriever = MagicMock()
     retriever.invoke.return_value = [_doc("a.pdf")]
-    with patch.object(rag_chain.vectorstore, "as_retriever", return_value=retriever) as asr, \
-         patch.object(rag_chain, "rerank_documents", side_effect=lambda q, d: d):
+    with (
+        patch.object(
+            rag_chain.vectorstore, "as_retriever", return_value=retriever
+        ) as asr,
+        patch.object(rag_chain, "rerank_documents", side_effect=lambda q, d: d),
+    ):
         retrieve_with_filter("query")
 
     search_kwargs = asr.call_args.kwargs["search_kwargs"]
@@ -55,8 +63,12 @@ def test_retrieve_with_filter_no_doc_type_omits_filter():
 def test_retrieve_with_filter_builds_qdrant_filter():
     retriever = MagicMock()
     retriever.invoke.return_value = []
-    with patch.object(rag_chain.vectorstore, "as_retriever", return_value=retriever) as asr, \
-         patch.object(rag_chain, "rerank_documents", side_effect=lambda q, d: d):
+    with (
+        patch.object(
+            rag_chain.vectorstore, "as_retriever", return_value=retriever
+        ) as asr,
+        patch.object(rag_chain, "rerank_documents", side_effect=lambda q, d: d),
+    ):
         retrieve_with_filter("query", doc_type="incident_report")
 
     search_kwargs = asr.call_args.kwargs["search_kwargs"]
@@ -66,8 +78,10 @@ def test_retrieve_with_filter_builds_qdrant_filter():
 def test_retrieve_with_filter_reranks_results():
     retriever = MagicMock()
     retriever.invoke.return_value = [_doc("a.pdf"), _doc("b.pdf")]
-    with patch.object(rag_chain.vectorstore, "as_retriever", return_value=retriever), \
-         patch.object(rag_chain, "rerank_documents", return_value=[_doc("b.pdf")]) as rr:
+    with (
+        patch.object(rag_chain.vectorstore, "as_retriever", return_value=retriever),
+        patch.object(rag_chain, "rerank_documents", return_value=[_doc("b.pdf")]) as rr,
+    ):
         out = retrieve_with_filter("query")
 
     rr.assert_called_once()
@@ -84,15 +98,19 @@ def test_list_indexed_sources_empty_when_collection_missing():
 
 def test_list_indexed_sources_aggregates_chunk_counts():
     def point(filename, doc_type):
-        return MagicMock(payload={"metadata": {"filename": filename, "doc_type": doc_type}})
+        return MagicMock(
+            payload={"metadata": {"filename": filename, "doc_type": doc_type}}
+        )
 
     points = [
         point("a.pdf", "regulation"),
         point("a.pdf", "regulation"),
         point("b.md", "incident_report"),
     ]
-    with patch.object(rag_chain.client, "collection_exists", return_value=True), \
-         patch.object(rag_chain.client, "scroll", return_value=(points, None)):
+    with (
+        patch.object(rag_chain.client, "collection_exists", return_value=True),
+        patch.object(rag_chain.client, "scroll", return_value=(points, None)),
+    ):
         sources = list_indexed_sources()
 
     # Sorted by filename; counts aggregated per file.

@@ -18,10 +18,9 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from logger import log_header, log_info, log_success, log_warning
-
 # retrieve_with_filter reranks internally (no second rerank here).
 from app.core.rag_chain import retrieve_with_filter
+from logger import log_header, log_info, log_success, log_warning
 
 EVAL_DIR = Path(__file__).resolve().parent
 DATASET_PATH = EVAL_DIR / "eval_dataset.json"
