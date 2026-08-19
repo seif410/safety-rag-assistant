@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     cohere_retry_max_attempts: int = 6
     chat_model: str = "gemini-2.5-flash"
     chat_model_provider: str = "google_genai"
+    chat_temperature: float = 0.0  # deterministic answers so eval runs compare
     embedding_batch_size: int = 50
     embedding_retry_min_seconds: int = 10
     chunk_size: int = 1200

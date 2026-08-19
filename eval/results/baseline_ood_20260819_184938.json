@@ -1,0 +1,341 @@
+{
+  "run_metadata": {
+    "timestamp": "2026-08-19T18:49:38.468181",
+    "chat_model": "gemini-2.5-flash",
+    "chat_temperature": 0.0,
+    "baseline_tag": "v0.1-prebuilt-agent",
+    "baseline_sha": "eb53ac0"
+  },
+  "results": [
+    {
+      "id": "ood_001",
+      "question": "What was the root cause of the ammonia refrigerant leak at the Site C cold storage facility?",
+      "expected": "refuse",
+      "answer": "I could not find any information about an ammonia refrigerant leak at the Site C cold storage facility in the retrieved documents.",
+      "sources": [
+        {
+          "filename": "incident_report_005.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_007.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_008.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_005.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "latency_s": 7.85,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_002",
+      "question": "How many lost workdays resulted from the trench collapse at the Site A excavation in March?",
+      "expected": "refuse",
+      "answer": "I could not find any information about lost workdays resulting from a trench collapse at the Site A excavation in March in the retrieved documents. Incident Report #001 (p.) describes an incident at Site A in March related to fall protection, but it states that no injuries occurred and therefore no lost workdays.",
+      "sources": [
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_005.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "latency_s": 5.05,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_003",
+      "question": "Which contractor was fined after the arc flash incident in the Site B substation?",
+      "expected": "refuse",
+      "answer": "I could not find information about a contractor being fined after an arc flash incident in the Site B substation in the retrieved documents.",
+      "sources": [
+        {
+          "filename": "incident_report_002.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_007.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_008.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_007.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "latency_s": 5.98,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_004",
+      "question": "Which safety incidents were recorded across both sites during the first quarter of 2025?",
+      "expected": "refuse",
+      "answer": "I could not find any safety incidents recorded across both sites during the first quarter of 2025 in the retrieved documents. The available incident reports are from 2024.",
+      "sources": [
+        {
+          "filename": "incident_report_005.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_002.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "latency_s": 24.2,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_005",
+      "question": "What was the name and employee ID of the electrician injured during the 480V maintenance work?",
+      "expected": "refuse",
+      "answer": "I could not find the name or employee ID of the electrician injured during the 480V maintenance work in the retrieved incident reports. Incident Report #002 describes the incident but does not specify the individual's name or employee ID.",
+      "sources": [
+        {
+          "filename": "incident_report_002.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_002.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_002.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "latency_s": 4.57,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_006",
+      "question": "What was the blood alcohol level of the crane operator involved in the dropped panel incident?",
+      "expected": "refuse",
+      "answer": "I could not find information about the blood alcohol level of the crane operator involved in the dropped panel incident in the retrieved documents. The incident report (incident_report_010.md) details the cause of the incident as defective rigging equipment and lack of proper safety procedures, but does not mention any details about the operator's sobriety.",
+      "sources": [
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_010.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_003.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "latency_s": 6.29,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_007",
+      "question": "What was the total insurance claim cost for the scaffolding collapse at Building 3?",
+      "expected": "refuse",
+      "answer": "I cannot find the total insurance claim cost for the scaffolding collapse at Building 3 in the provided incident reports. The document `incident_report_006.md` describes the incident but does not mention insurance claim costs.",
+      "sources": [
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_006.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        },
+        {
+          "filename": "incident_report_001.md",
+          "page": null,
+          "doc_type": "incident_reports"
+        }
+      ],
+      "latency_s": 23.82,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_008",
+      "question": "What is the OSHA permissible exposure limit for airborne lead in construction?",
+      "expected": "refuse",
+      "answer": "I cannot find the specific OSHA permissible exposure limit for airborne lead in construction within the retrieved documents. The documents indicate that OSHA standard 1926.62 applies to lead in construction, but they do not detail the numerical exposure limits.",
+      "sources": [
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 41,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 35,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 40,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 43,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 41,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 35,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 40,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 40,
+          "doc_type": "regulation"
+        }
+      ],
+      "latency_s": 10.92,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_009",
+      "question": "How does OSHA's asbestos abatement notification process work for demolition projects?",
+      "expected": "refuse",
+      "answer": "I cannot find specific details about OSHA's asbestos abatement *notification process* for demolition projects in the provided documents. The documents mention OSHA standards 1910.1001 and 1926.1101 related to asbestos in buildings and construction, respectively, but do not outline the notification procedures.",
+      "sources": [
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 39,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 35,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 19,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 41,
+          "doc_type": "regulation"
+        }
+      ],
+      "latency_s": 4.78,
+      "outcome": null,
+      "citation_valid": null
+    },
+    {
+      "id": "ood_010",
+      "question": "What is the maximum dollar penalty OSHA can issue for a willful violation?",
+      "expected": "refuse",
+      "answer": "I apologize, but I was unable to find the maximum dollar penalty OSHA can issue for a willful violation in the retrieved documents.",
+      "sources": [
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 15,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 16,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "SHPM_guidelines.pdf",
+          "page": 12,
+          "doc_type": "regulation"
+        },
+        {
+          "filename": "OSHA3021.pdf",
+          "page": 22,
+          "doc_type": "regulation"
+        }
+      ],
+      "latency_s": 21.63,
+      "outcome": null,
+      "citation_valid": null
+    }
+  ]
+}
