@@ -144,6 +144,7 @@ def run_query(query: str, session_id: str = "default") -> dict:
         model=settings.chat_model,
         model_provider=settings.chat_model_provider,
         api_key=settings.google_api_key,
+        temperature=settings.chat_temperature,
     )
     agent = create_agent(
         llm,
