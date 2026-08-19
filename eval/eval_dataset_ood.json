@@ -1,0 +1,156 @@
+[
+  {
+    "id": "ood_001",
+    "question": "What was the root cause of the ammonia refrigerant leak at the Site C cold storage facility?",
+    "category": "nonexistent_incident",
+    "expected_behavior": "refuse",
+    "why_absent": "No Site C exists. The corpus covers two sites only: Al-Obour Industrial Complex (Site A) and 10th of Ramadan Industrial Zone (Site B). No ammonia or refrigerant incident is recorded.",
+    "distractor_risk": "Report 005 involves a chemical storage tank with residual solvent vapors and a hospitalised worker, which is topically close enough to rank well.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_002",
+    "question": "How many lost workdays resulted from the trench collapse at the Site A excavation in March?",
+    "category": "nonexistent_incident",
+    "expected_behavior": "refuse",
+    "why_absent": "No trench, excavation, or cave-in incident exists in the corpus. Lost-workday counts are recorded for four incidents — electrical (3), forklift (14), confined space (2), scaffolding (42) — none of them an excavation.",
+    "distractor_risk": "Site A and March are both real: report 001 is dated 2024-03-15 at Site A, but it is a fall protection incident. Report 008 also cites 29 CFR 1926.651, which sits in the Excavations subpart, so the word will surface in retrieval.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_003",
+    "question": "Which contractor was fined after the arc flash incident in the Site B substation?",
+    "category": "nonexistent_incident",
+    "expected_behavior": "refuse",
+    "why_absent": "No arc flash incident, no substation, no contractor names, and no fine or penalty amounts appear anywhere in the corpus.",
+    "distractor_risk": "Report 002 is an electrical incident at Site B involving a 480V motor control center, and cites three electrical CFR standards.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_004",
+    "question": "Which safety incidents were recorded across both sites during the first quarter of 2025?",
+    "category": "nonexistent_incident",
+    "expected_behavior": "refuse",
+    "why_absent": "The incident corpus runs from 2024-03-15 to 2024-09-18. Nothing after September 2024 is recorded.",
+    "distractor_risk": "Every incident report will rank plausibly — the question asks for a list of exactly the document type retrieved, so the grader keeps the chunks and the refusal has to come from noticing the date range.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_005",
+    "question": "What was the name and employee ID of the electrician injured during the 480V maintenance work?",
+    "category": "absent_detail_real_incident",
+    "expected_behavior": "refuse",
+    "why_absent": "The injured electrician is never named and no employee IDs appear anywhere in the corpus.",
+    "distractor_risk": "Highest in the set. Report 002 carries 'Reported By: Electrical Foreman - Mostafa Ibrahim' a few lines above the incident description, so a plausible human name sits inside the retrieved chunk and belongs to someone other than the injured worker.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_006",
+    "question": "What was the blood alcohol level of the crane operator involved in the dropped panel incident?",
+    "category": "absent_detail_real_incident",
+    "expected_behavior": "refuse",
+    "why_absent": "The dropped wall panel incident is real (report 010) but the recorded cause is a corroded wire rope sling with broken wires. No drug or alcohol testing data exists in any report.",
+    "distractor_risk": "Report 010 is filed under 'Reported By: Crane Operator - Hossam El-Din', so the question's subject appears by name in the chunk.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_007",
+    "question": "What was the total insurance claim cost for the scaffolding collapse at Building 3?",
+    "category": "absent_detail_real_incident",
+    "expected_behavior": "refuse",
+    "why_absent": "The scaffolding collapse at the east wall of Building 3 is real (report 006) but no cost, claim, or financial figure is recorded for it or any other incident.",
+    "distractor_risk": "Report 007 records an insurance adjuster site visit on 2024-08-10, so the term 'insurance' is present in the corpus — attached to a different incident.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_008",
+    "question": "What is the OSHA permissible exposure limit for airborne lead in construction?",
+    "category": "adjacent_regulation",
+    "expected_behavior": "refuse",
+    "why_absent": "No lead PEL appears in the corpus. The only PEL recorded is respirable crystalline silica at 0.05 mg/m3, in report 009.",
+    "distractor_risk": "Two lexical traps. Report 005 repeatedly says 'lead worker' meaning the worker leading the entry, and report 009 supplies a fully-formed PEL answer for a different substance — an easy substitution for a model under pressure to answer.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": true
+  },
+  {
+    "id": "ood_009",
+    "question": "How does OSHA's asbestos abatement notification process work for demolition projects?",
+    "category": "adjacent_regulation",
+    "expected_behavior": "refuse",
+    "why_absent": "Asbestos appears nowhere in the incident reports and is not covered by either regulatory document's scope.",
+    "distractor_risk": "Low. Construction-hazard language will rank moderately but nothing answers the question.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": true
+  },
+  {
+    "id": "ood_010",
+    "question": "What is the maximum dollar penalty OSHA can issue for a willful violation?",
+    "category": "adjacent_regulation",
+    "expected_behavior": "refuse",
+    "why_absent": "No penalty schedule or monetary amount appears in the incident reports. Confirm the same for OSHA3021.pdf before trusting this item — worker-rights publications sometimes print penalty maximums.",
+    "distractor_risk": "Every report has an 'OSHA Standards Violated' section, so citation-shaped content ranks highly while containing no penalty figures.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": true
+  },
+  {
+    "id": "ood_011",
+    "question": "What are the specific requirements of the OSHA lockout/tagout standard 29 CFR 1910.147?",
+    "category": "cited_but_not_contained",
+    "expected_behavior": "partial",
+    "answerable_part": "The corpus can confirm that 29 CFR 1910.147 is the control of hazardous energy standard, and that report 002 records a LOTO failure during 480V maintenance.",
+    "unanswerable_part": "The standard's actual requirements. The corpus contains a one-line title gloss, not the regulation text.",
+    "why_absent": "Report 002's standards section cites 1910.147 with a single descriptive line. No requirements, procedures, or subsections exist anywhere in the corpus.",
+    "distractor_risk": "The exact standard number is present verbatim, so retrieval will look like a direct hit and rerank scores will be high. This is the item most likely to produce a confident, unsupported answer.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  },
+  {
+    "id": "ood_012",
+    "question": "How do EU Directive 89/391/EEC obligations differ from the US General Duty Clause?",
+    "category": "cited_but_not_contained",
+    "expected_behavior": "partial",
+    "answerable_part": "The General Duty Clause, Section 5(a)(1), is covered in SHPM_guidelines.pdf.",
+    "unanswerable_part": "Everything about the EU directive, and therefore the comparison itself.",
+    "why_absent": "The corpus is US OSHA material and Egyptian site reports. No EU directive, and no comparative material.",
+    "distractor_risk": "Half the question retrieves cleanly, which is exactly what makes a full refusal wrong here — grading this as a refusal would penalise the correct behaviour.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": true
+  },
+  {
+    "id": "ood_013",
+    "question": "What heat stress controls are required for outdoor work during summer months?",
+    "category": "adjacent_topical",
+    "expected_behavior": "refuse",
+    "why_absent": "No heat stress, heat illness, hydration, or thermal exposure content exists in the incident reports, despite the sites being in Egypt and several incidents occurring in summer.",
+    "distractor_risk": "Reports 006 and 007 are July and August outdoor incidents, and SHPM guidelines discuss hazard identification generically — so the model can assemble something plausible-sounding from adjacent material.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": true
+  },
+  {
+    "id": "ood_014",
+    "question": "What machine guarding is required on a powered press to prevent amputation injuries?",
+    "category": "adjacent_topical",
+    "expected_behavior": "refuse",
+    "why_absent": "No machine guarding, point-of-operation, or amputation content appears in the corpus. The closest mechanical hazards are forklift and crane operations, neither of which involves guarding.",
+    "distractor_risk": "The corpus is rich in 1910-series citations, so the model may pattern-match toward a standard number it has seen without one existing for this topic.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": true
+  },
+  {
+    "id": "ood_015",
+    "question": "What does the ISO 45001 certification audit cycle require?",
+    "category": "out_of_domain",
+    "expected_behavior": "refuse",
+    "why_absent": "ISO 45001 is not in the corpus. Only OSHA material and internal incident reports are ingested.",
+    "distractor_risk": "Low by design. This item is the control — retrieval returns weak matches and refusal should be easy. If this one fails, the problem is upstream of the grader.",
+    "verified_against": ["incident_reports"],
+    "needs_pdf_verification": false
+  }
+]
